@@ -1,27 +1,20 @@
-import os
-import requests
+import os, requests
 from dotenv import load_dotenv
 
 # Cargar variables de entorno
 load_dotenv()
 
 # Obtener las credenciales
-api_key = os.getenv('POLONIEX_API_KEY')
-api_secret = os.getenv('POLONIEX_SECRET_KEY')
+api_key, api_secret = os.getenv('POLONIEX_API_KEY'), os.getenv('POLONIEX_SECRET_KEY')
 
 # Mostrar que hay una conexión establecida y las credenciales
-print("Conexión establecida con Poloniex API")
-print(f"API Key: {api_key}")
-print(f"API Secret: {api_secret}")
+print(f"Conexión establecida con Poloniex API\nAPI Key: {api_key}\nAPI Secret: {api_secret}")
 
 # Conectarse a la URL y obtener la información
-url = 'https://api.poloniex.com/markets/price'
-response = requests.get(url)
+response = requests.get('https://api.poloniex.com/markets/price')
 
 if response.status_code == 200:
-    data = response.json()
     print("\nInformación de precios de mercado:")
-    for item in data:
-        print(f"Símbolo: {item['symbol']}, Precio: {item['price']}, Cambio diario: {item['dailyChange']}")
+    [print(f"Símbolo: {item['symbol']}, Precio: {item['price']}, Cambio diario: {item['dailyChange']}") for item in response.json()]
 else:
     print(f"Error al obtener datos: {response.status_code}")
