@@ -1,0 +1,3 @@
+PARA PODER EJECUTAR TODOS LOS ARCHIVOS .PY
+1.- pip install requests
+2.- pip install python-dotenv
