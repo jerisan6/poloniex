@@ -11,7 +11,7 @@ api_key, api_secret = os.getenv('POLONIEX_API_KEY'), os.getenv('POLONIEX_SECRET_
 print(f"Conexión establecida con Poloniex API\nAPI Key: {api_key}\nAPI Secret: {api_secret}")
 
 # Conectarse a la URL y obtener la información
-response = requests.get('https://api.poloniex.com/markets/price')
+response = requests.get('https://api.poloniex.com/markets')
 
 if response.status_code == 200:
     print("\nInformación de precios de mercado:")
